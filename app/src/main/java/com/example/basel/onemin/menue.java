@@ -32,7 +32,11 @@ public class menue extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                lv.getOnItemClickListener();
+
+                Intent i = new Intent(getApplicationContext(),Details.class);
+                i.putExtra("id",position);
+
+                startActivity(i);
 
             }
         });
