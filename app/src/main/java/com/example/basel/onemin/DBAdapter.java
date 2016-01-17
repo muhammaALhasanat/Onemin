@@ -22,7 +22,7 @@ public class DBAdapter extends SQLiteOpenHelper {
 
     private  static  String DB_PATH ="/data/data/com.example.basel.onemin/databases/";
     private static String DB_NAME = "food.db";
-    public static SQLiteDatabase myDataBase;
+    public static  SQLiteDatabase myDataBase;
     private final Context myContext;
     private static DBAdapter instance;
     public DBAdapter(Context context) {
