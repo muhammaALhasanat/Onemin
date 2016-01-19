@@ -20,7 +20,7 @@ import java.util.List;
 public class DBAdapter extends SQLiteOpenHelper {
 
 
-    private  static  String DB_PATH ="/data/data/com.example.basel.onemin/databases/";
+    public   static  String DB_PATH ="/data/data/com.example.basel.onemin/databases/";
     private static String DB_NAME = "food.db";
     public static  SQLiteDatabase myDataBase;
     private final Context myContext;
@@ -31,6 +31,7 @@ public class DBAdapter extends SQLiteOpenHelper {
         this.myContext = context;
     }
     public void createDataBase() throws IOException {
+
 
         boolean dbExist = checkDataBase();
 

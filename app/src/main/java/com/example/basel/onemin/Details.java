@@ -11,11 +11,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Details extends AppCompatActivity {
     DBAdapter myDbHelper = new DBAdapter(this);
     Details chosenObject;
+    String   dataes ="";
     int item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +28,26 @@ public class Details extends AppCompatActivity {
         Intent data=getIntent();
         int des=data.getIntExtra("id", 1);
         //String s= String.valueOf(des);
-        //Cursor sq= myDbHelper.myDataBase.rawQuery("select * from sweet where '"+des+"' = description)",null);
+        //
+        // Cursor sq= myDbHelper.myDataBase.rawQuery("select * from sweet where description = '"+des+"')",null);
         try {
-            Cursor sq= myDbHelper.myDataBase.rawQuery("select * from sweet where '"+des+"'",null);
-            Toast.makeText(getApplicationContext(), (CharSequence) sq,Toast.LENGTH_LONG).show();
+            //String query = "SELECT * FROM sweet WHERE " + des + " = name";
+            String query = "SELECT * FROM sweet WHERE " + des + " = name";
+            SQLiteDatabase database = myDbHelper.getReadableDatabase();
+           //Cursor sq = myDbHelper.myDataBase.rawQuery("select * from sweet", null);
+           Cursor cursor = database.rawQuery(query, null);
+           cursor.moveToFirst();
+            String description = cursor.getString(2);
+            t1.setText(description);
 
-        }catch (Exception e)
+
+        }
+
+
+        catch (Exception e)
         {
-            Toast.makeText(getApplicationContext(), "errod",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Eroor",Toast.LENGTH_LONG).show();
             e.printStackTrace();
-
         }
 
 
